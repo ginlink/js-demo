@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片懒加载</title>
+
+  <style>
+    .box {
+      height: 1000px;
+      background-color: gray;
+
+      position: relative;
+    }
+
+    .img {
+      position: absolute;
+      bottom: 100px;
+    }
+
+    .img>img {
+      width: 150px;
+      height: 100px;
+      opacity: 0;
+
+      transition: all 2s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="img">
+      <img id="img" src="./assets/default.png" alt="">
+    </div>
+  </div>
+
+  <script>
+    function changeImg() {
+      const imgEl = document.getElementById('img')
+
+      const distance = -200
+      const innerHeight = window.innerHeight
+      const imgTop = imgEl.getClientRects()[0].top
+
+      const isCanShowImg = imgTop - distance < innerHeight
+      const imgSrc = './assets/00linux图片.png'
+
+      console.log('[j]:', innerHeight, imgTop, isCanShowImg)
+      if (isCanShowImg) {
+        imgEl.src = imgSrc
+        imgEl.style.opacity = 1
+      }
+    }
+
+    window.onload = function () {
+      const changeImgDebunced = debunce(changeImg, 200, false)
+      // 防抖
+
+      window.addEventListener('scroll', (e) => {
+        changeImgDebunced()
+      }, false)
+    }
+
+    function debunce(fn, wait, immediate = true) {
+      let timer, context, params
+
+      return function (...args) {
+        if (!timer) {
+          timer = later()
+
+          if (!immediate) {
+            context = this;
+            params = args
+          } else {
+            fn.apply(this, args)
+          }
+        } else {
+          // 重复调用，清除定时器，
+          clearTimeout(timer)
+          timer = later()
+        }
+      }
+
+      function later() {
+        return setTimeout(() => {
+          timer = null
+
+          if (!immediate) {
+            fn.apply(context, params)
+            context = params = null
+          }
+        }, wait)
+      }
+    }
+  </script>
+</body>
+
+</html>
