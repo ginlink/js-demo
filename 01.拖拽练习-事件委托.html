@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+    }
+
+    .box {
+      display: grid;
+      /* grid真得好用，推荐阮一峰的教程，MDN可以当做手册看
+                http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html
+                */
+      width: 200px;
+
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .box1 {
+      width: 100%;
+      height: 100px;
+      border: 1px solid green;
+    }
+
+    .box2 {
+      width: 100%;
+      height: 100px;
+      border: 1px solid lightcoral;
+    }
+
+    .el1 {
+      width: 50px;
+      height: 50px;
+      border: 1px solid red;
+    }
+
+    .el2 {
+      width: 50px;
+      height: 50px;
+      border: 1px solid green;
+    }
+
+    .el3 {
+      width: 50px;
+      height: 50px;
+      border: 1px solid pink;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box" class="box">
+    <div id="box1" class="box2">
+    </div>
+    <div id="box2" class="box2">
+    </div>
+  </div>
+
+  <div id="el" class="el">
+    <div id="el1" class="el1" draggable="true">1
+      <!-- 注意让元素支持拖拽，默认不支持 -->
+    </div>
+    <div id="el2" class="el2" draggable="true">2
+    </div>
+    <div id="el3" class="el3" draggable="true">3
+    </div>
+  </div>
+
+
+  <script>
+    window.onload = function () {
+
+      const box = document.getElementById('box')
+      const box1 = document.getElementById('box1')
+      const box2 = document.getElementById('box2')
+      const el = document.getElementById('el')
+      const el1 = document.getElementById('el1')
+      const el2 = document.getElementById('el2')
+      const el3 = document.getElementById('el3')
+
+      el1.father = el
+      el2.father = el
+      el3.father = el
+      // 记录它们各自的父亲
+
+      let currentDraggingElement = null
+      // 记录当前被拖动的元素，因为我发现拖动事件中获取不到放入的元素，呜呜呜
+
+      // 给el的父亲们设置拖拽委托事件
+      el.addEventListener('dragstart', function (e) {
+        console.log('[el委托]:', e)
+        currentDraggingElement = e.target
+      })
+
+      box1.addEventListener('dragstart', function (e) {
+        console.log('[box1委托]:', e)
+        currentDraggingElement = e.target
+      })
+      box2.addEventListener('dragstart', function (e) {
+        console.log('[box2委托]:', e)
+        currentDraggingElement = e.target
+      })
+
+
+      // 给父亲设置放置事件
+      box.addEventListener('drop', function (e) {
+        const that = e.target
+
+        console.log('[]:', typeof (that))
+        that.father && alert('[Wraning]: 子元素身上不允许放置元素!')
+        if (!currentDraggingElement || that.father) return
+        // 【注意】判断元素是否为el子元素，如果是，不能进行放置元素 否则会出错
+
+        currentDraggingElement.father.removeChild(currentDraggingElement)
+        that.appendChild(currentDraggingElement)
+
+        currentDraggingElement.father = that
+        // 重置元素的父亲
+      })
+      draggable(box)
+      // 让盒子接受拖拽元素
+
+    }
+
+    function draggable(el) {
+      el.addEventListener('dragenter', function (e) {
+        // e.target.preventDefault()
+        // 报错，preventDefault是事件的方法，不是元素的方法
+
+        e.preventDefault()
+        // 【注意】在委托事件中，只要父亲可以接受拖拽元素即可
+      })
+      el.addEventListener('dragover', function (e) {
+        // e.target.preventDefault()
+        e.preventDefault()
+      })
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+    }
+
+    .box {
+      display: grid;
+      /* grid真得好用，推荐阮一峰的教程，MDN可以当做手册看
+                http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html
+                */
+      width: 200px;
+
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .box1 {
+      width: 100%;
+      height: 100px;
+      border: 1px solid green;
+    }
+
+    .box2 {
+      width: 100%;
+      height: 100px;
+      border: 1px solid lightcoral;
+    }
+
+    .el1 {
+      width: 50px;
+      height: 50px;
+      border: 1px solid red;
+    }
+
+    .el2 {
+      width: 50px;
+      height: 50px;
+      border: 1px solid green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div id="box1" class="box2">
+    </div>
+    <div id="box2" class="box2">
+    </div>
+  </div>
+
+  <div id="el" class="el">
+    <div id="el1" class="el1" draggable="true">1
+      <!-- 注意让元素支持拖拽，默认不支持 -->
+    </div>
+    <div id="el2" class="el2" draggable="true">2
+    </div>
+  </div>
+
+
+  <script>
+    window.onload = function () {
+
+      const box1 = document.getElementById('box1')
+      const box2 = document.getElementById('box2')
+      const el = document.getElementById('el')
+      const el1 = document.getElementById('el1')
+      const el2 = document.getElementById('el2')
+
+      el1.father = el
+      el2.father = el
+      // 记录它们各自的父亲
+
+      let currentDraggingElement = null
+      // 记录当前被拖动的元素，因为我发现拖动事件中获取不到放入的元素，呜呜呜
+
+      el1.addEventListener('dragstart', function (e) {
+        currentDraggingElement = this
+      }, false)
+      el2.addEventListener('dragstart', function (e) {
+        currentDraggingElement = this
+      }, false)
+      // 给元素设置开始拖动事件，并重置当前被拖动的元素
+
+
+      // 下面就是给盒子设置一些事件
+      box1.addEventListener('drop', function (e) {
+        // 当元素放入的时候
+        if (!currentDraggingElement) return
+
+        currentDraggingElement.father.removeChild(currentDraggingElement)
+        this.appendChild(currentDraggingElement)
+
+        currentDraggingElement.father = this
+        // 重置元素的父亲
+      })
+      draggable(box1)
+      // 这两个事件主要去除默认事件，让盒子支持放置元素，默认不支持
+
+      box2.addEventListener('drop', function (e) {
+        if (!currentDraggingElement) return
+
+        currentDraggingElement.father.removeChild(currentDraggingElement)
+        this.appendChild(currentDraggingElement)
+
+        currentDraggingElement.father = this
+      })
+      draggable(box2)
+
+    }
+
+    function draggable(el) {
+      el.addEventListener('dragenter', function (e) {
+        e.preventDefault()
+      })
+      el.addEventListener('dragover', function (e) {
+        e.preventDefault()
+      })
+    }
+  </script>
+</body>
+
+</html>
