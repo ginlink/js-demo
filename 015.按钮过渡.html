@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .box {
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100px;
+      height: 20px;
+    }
+
+    #btn2,
+    #btn4 {
+      position: absolute;
+      transition: left .7s;
+      z-index: -1;
+    }
+
+    #btn2 {
+      left: 0;
+    }
+
+    #btn4 {
+      left: 100px;
+    }
+
+    #btn1:hover+#btn2 {
+      z-index: 1;
+      left: 100px;
+      background-color: red;
+    }
+
+    #btn3:hover+#btn4 {
+      z-index: 1;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+
+    <button id="btn3">按钮2</button>
+    <button id="btn4">按钮1</button>
+  </div>
+</body>
+
+</html>
