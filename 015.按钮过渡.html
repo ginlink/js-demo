@@ -8,52 +8,74 @@
   <title>Document</title>
 
   <style>
+    body {
+      margin: 0;
+    }
+
     .box {
       position: relative;
       box-sizing: border-box;
     }
 
-    button {
+    .bg {
+      position: relative;
+      width: 200px;
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+      /* padding: 0 10px; */
+      border: 1px solid red;
+      border-radius: 30px;
+
+      text-align: center;
+
+      box-sizing: border-box;
+    }
+
+    .bg>.item {
       width: 100px;
-      height: 20px;
+      height: 100%;
+      background-color: transparent;
+      color: gray;
+
     }
 
-    #btn2,
-    #btn4 {
+    .bg>.item:nth-child(2):hover+.front {
+      left: 100px;
+    }
+
+
+    .bg>.front {
       position: absolute;
-      transition: left .7s;
+      left: 0;
+      top: 0;
+      background-color: blue;
+      border-radius: 30px;
+      width: 100px;
+      height: 30px;
+      transition: left .5s;
+      color: white;
+
       z-index: -1;
-    }
-
-    #btn2 {
-      left: 0;
-    }
-
-    #btn4 {
-      left: 100px;
-    }
-
-    #btn1:hover+#btn2 {
-      z-index: 1;
-      left: 100px;
-      background-color: red;
-    }
-
-    #btn3:hover+#btn4 {
-      z-index: 1;
-      left: 0;
     }
   </style>
 </head>
 
 <body>
   <div class="box">
-    <button id="btn1">按钮1</button>
-    <button id="btn2">按钮2</button>
-
-    <button id="btn3">按钮2</button>
-    <button id="btn4">按钮1</button>
+    <div class="bg">
+      <div class="item">按钮1</div>
+      <div class="item">按钮2</div>
+      <div class="front"></div>
+    </div>
   </div>
+
+  <script>
+    /**
+     * 其实可以让背景动起来，只需要两个div即可
+     * 一个大的div在后面，一个小的div在前面，小div动
+     */
+  </script>
 </body>
 
 </html>
