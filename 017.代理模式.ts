@@ -2,7 +2,6 @@
  * 代理模式适用于对原对象扩展功能的场景
  */
 
-
 function main17() {
   interface Animal{
     name: string
