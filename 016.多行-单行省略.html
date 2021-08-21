@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>016.多行-单行省略</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 60px;
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      line-height: 20px;
+    }
+
+    .box-single {
+      width: 100px;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    我是文字加上了肯德基反垃圾SDK分离焦虑肯德基阿斯利康放进拉克丝等级分类卡死了点击快乐番薯讲道理快捷方式来看待缴费落款时间到了就
+  </div>
+
+  <hr>
+  <div class="box-single">
+    我是文字加上了肯德基反垃圾SDK分离焦虑肯德基阿斯利康放进拉克丝等级分类卡死了点击快乐番薯讲道理快捷方式来看待缴费落款时间到了就
+  </div>
+
+</body>
+
+</html>
