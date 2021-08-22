@@ -45,14 +45,14 @@ function main20() {
     }
   }
 
-
+  // 模拟400ms收集一次，2000ms执行一次，也就是收集了5次
   setInterval(()=>{
     collectManaget.add(()=>{
       console.log('[执行我]:', )
     })
     collectManaget.collectWaitExecute() // 收集后执行
 
-  }, 300)
+  }, 400)
   
 }
 
