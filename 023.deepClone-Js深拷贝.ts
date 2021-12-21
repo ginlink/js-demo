@@ -90,4 +90,7 @@ function main() {
   console.log('[](a, clonedA):', a, clonedA)
 }
 
-main()
+// main()
+
+new Function 
+
