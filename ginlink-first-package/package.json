@@ -1,0 +1,10 @@
+{
+  "name": "ginlink-first-package",
+  "version": "1.0.0",
+  "main": "./src/main.ts",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {}
+}
