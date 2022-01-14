@@ -92,5 +92,4 @@ function main() {
 
 // main()
 
-new Function 
-
+new Function()

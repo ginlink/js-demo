@@ -1,4 +1,3 @@
-
 const origin = {
   token1: '111',
   token2: null,
@@ -18,10 +17,9 @@ function main(hg) {
     singleToken && set.add(singleToken)
     origin.token1 && set.add(origin.token1)
     origin.token2 && set.add(origin.token2)
-    if (set.size != 1) return console.log('[不匹配]:',)
+    if (set.size != 1) return console.log('[不匹配]:')
 
     console.log('[匹配单币]:', singleToken)
-
   } else {
     // token不能为null
     target.token1 && set.add(target.token1)
@@ -30,11 +28,10 @@ function main(hg) {
     origin.token1 && set.add(origin.token1)
     origin.token2 && set.add(origin.token2)
 
-    if (set.size != 2) return console.log('[不匹配]:',)
+    if (set.size != 2) return console.log('[不匹配]:')
 
     console.log('[双币]:', set)
   }
-
 }
 
-main()
+export {}
