@@ -1,11 +1,11 @@
-// 交换算法
+// Exchange algorithm
 export function swap(arr, a, b) {
   let tmp = arr[b]
   arr[b] = arr[a]
   arr[a] = tmp
 }
 
-// 适应深拷贝
+// Adaptation to deep copy
 export function deep_clone(o) {
   return rec(o)
   function rec(o) {
@@ -33,7 +33,7 @@ export function deep_clone(o) {
   }
 }
 
-// 创造数组
+// Create an array
 export function createArr(num = 100) {
   let tmp = []
   for (let i = 0; i < num; i++) {
@@ -42,4 +42,60 @@ export function createArr(num = 100) {
   }
 
   return tmp
+}
+
+// Optimize array to binary tree
+export function arr2tree(arr: (number | null)[]) {
+  if (arr[0] == null) return null
+
+  const queue: (TreeNode | null)[] = []
+  const root = new TreeNode111(arr[0])
+
+  queue.unshift(root)
+
+  let isLeft = true
+  for (let i = 1; i < arr.length; ++i) {
+    const peekEl = queue[queue.length - 1]
+
+    if (isLeft) {
+      if (arr[i] != null) {
+        console.log('[]:', peekEl, arr[i])
+        peekEl.left = new TreeNode111(arr[i])
+        queue.unshift(peekEl.left)
+      }
+      isLeft = false
+    } else {
+      if (arr[i] != null) {
+        peekEl.right = new TreeNode111(arr[i])
+        queue.unshift(peekEl.right)
+      }
+
+      queue.pop()
+      isLeft = true
+    }
+  }
+
+  return root
+}
+
+// Not optimizing the array to binary tree
+export function arr2tree2(arr: (number | null)[]) {
+  return createTreeNode(arr, 1)
+
+  function createTreeNode(arr: (number | null)[], index: number): TreeNode111 | null {
+    if (arr[index - 1] == null) {
+      return null
+    }
+
+    if (index > arr.length) {
+      return null
+    }
+
+    const node = new TreeNode111(arr[index - 1])
+
+    node.left = createTreeNode(arr, 2 * index)
+    node.right = createTreeNode(arr, 2 * index + 1)
+
+    return node
+  }
 }
