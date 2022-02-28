@@ -1,3 +1,34 @@
+export class ListNode {
+  val?: any
+  next: ListNode
+
+  constructor(val?: any) {
+    this.val = val
+  }
+}
+
+export class TreeNode {
+  val: number
+  left: TreeNode | null = null
+  right: TreeNode | null = null
+
+  constructor(val: number, left: TreeNode | null, right: TreeNode | null) {
+    this.val = val
+    this.left = left
+    this.right = right
+  }
+}
+
+export class TreeNode111 {
+  val: number
+  left: TreeNode | null = null
+  right: TreeNode | null = null
+
+  constructor(val: number) {
+    this.val = val
+  }
+}
+
 // Exchange algorithm
 export function swap(arr, a, b) {
   let tmp = arr[b]
@@ -97,5 +128,29 @@ export function arr2tree2(arr: (number | null)[]) {
     node.right = createTreeNode(arr, 2 * index + 1)
 
     return node
+  }
+}
+
+export function createList(n = 5): ListNode {
+  if (n <= 0) return
+
+  const head = new ListNode(1)
+  let cloneHead = head
+
+  for (let i = 1; i < n; ++i) {
+    const newNode = new ListNode(i + 1)
+    cloneHead.next = newNode
+
+    cloneHead = cloneHead.next
+  }
+
+  return head
+}
+
+export function traverseList(head: ListNode) {
+  let clone = head
+  while (clone) {
+    console.log('[val]:', clone.val)
+    clone = clone.next
   }
 }
