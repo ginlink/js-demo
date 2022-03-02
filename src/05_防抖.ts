@@ -61,7 +61,7 @@ if (btn) {
   addEventListener('click', fn, false)
 }
 
-function debunce(fn, wait, immediate = true, before = null, callback = null) {
+export function debounce(fn, wait, immediate = true, before = null, callback = null) {
   let timer, context, params
 
   return function (...args) {
