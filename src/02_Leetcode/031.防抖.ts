@@ -1,21 +1,3 @@
-function main() {
-  const fn = debounce(() => {
-    console.log('[13232323233]:')
-  })
-
-  let counter = 0
-  const timer = setInterval(() => {
-    if (counter > 10) {
-      clearInterval(timer)
-    }
-
-    ++counter
-    fn()
-  }, 100)
-}
-
-main()
-
 function debounce(fn: () => void, wait = 50, immediate = true) {
   let timer = null
 
@@ -33,3 +15,21 @@ function debounce(fn: () => void, wait = 50, immediate = true) {
     }, wait)
   }
 }
+
+function main() {
+  const fn = debounce(() => {
+    console.log('[13232323233]:')
+  })
+
+  let counter = 0
+  const timer = setInterval(() => {
+    if (counter > 10) {
+      clearInterval(timer)
+    }
+
+    ++counter
+    fn()
+  }, 100)
+}
+
+main()
