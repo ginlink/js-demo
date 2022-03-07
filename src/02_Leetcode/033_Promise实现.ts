@@ -28,7 +28,7 @@ export class MyPromise {
   private fulfilledQueueCallbacks: (() => void)[] = []
   private rejectedQueueCallbacks: (() => void)[] = []
 
-  constructor(fn) {
+  constructor(executor: (resolve: any, reject: any) => void) {
     const resolve = (value: any) => {
       if (this.state === PromiseState.PENDING) {
         // why is use queueMicrotask?
@@ -53,7 +53,7 @@ export class MyPromise {
       }
     }
 
-    fn(resolve, reject)
+    executor(resolve, reject)
   }
 
   then(onFulfilled?: any, onRejected?: any) {
