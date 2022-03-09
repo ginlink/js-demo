@@ -1,5 +1,6 @@
 function binary_search(key, arr) {
-  let lo = 0, hi = arr.length - 1
+  let lo = 0,
+    hi = arr.length - 1
   while (lo <= hi) {
     console.log('[lo]:', lo)
     console.log('[hi]:', hi)
@@ -12,7 +13,6 @@ function binary_search(key, arr) {
   return -1
 }
 
-
 let arr = [1, 2, 4, 5, 6, 7, 8, 9, 11],
-  key = 9
+  key = 11
 console.log('[res]:', binary_search(key, arr))
