@@ -19,7 +19,7 @@ function rob(nums: number[]): number {
   return dep[len - 1]
 }
 
-// ❌ failed violence
+// ❌ failed violence way
 function rob111(nums: number[]): number {
   const len = nums.length
   let ans = -Infinity
