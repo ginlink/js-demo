@@ -6,33 +6,39 @@ function largestRectangleArea(heights: number[]): number {
   }[] = []
   let ans = 0
 
-  if (len == 1) {
-    return heights[0]
-  }
-
   for (let i = 0; i < len; ++i) {
     const curr = heights[i]
+    const { pos: top, value: topValue } = stack[stack.length - 1] ?? {}
 
-    // console.log('[stack]:', stack)
-
-    while (stack[stack.length - 1] && curr < stack[stack.length - 1].value) {
-      // Out of stack
+    if (topValue && curr < topValue) {
       const { pos } = stack.pop()
-      const { pos: top } = stack[stack.length - 1] ?? { pos: 0 }
 
-      const area = stack.length <= 0 ? (i - top) * heights[pos] : (i - 1 - top) * heights[pos]
+      let area = 0
+      if (stack.length > 0) {
+        area = (i - 1 - top) * heights[pos]
+      } else {
+        area = (i - top) * heights[pos]
+      }
 
       ans = Math.max(ans, area)
     }
 
-    stack.push({ pos: i, value: curr })
+    stack.push({
+      pos: i,
+      value: heights[i],
+    })
   }
 
   while (stack.length > 0) {
     const { pos } = stack.pop()
     const { pos: top } = stack[stack.length - 1] ?? { pos: 0 }
 
-    const area = stack.length <= 0 ? (len - top) * heights[pos] : (len - 1 - top) * heights[pos]
+    let area = 0
+    if (stack.length > 0) {
+      area = (len - 1 - top) * heights[pos]
+    } else {
+      area = (len - top) * heights[pos]
+    }
 
     ans = Math.max(ans, area)
   }
@@ -45,8 +51,8 @@ function main() {
   // const heights = [2, 1, 5, 6, 2] 5
   // const heights = [2, 4]
   // const heights = [1]
-  // const heights = [1, 1]
-  const heights = [9, 0]
+  const heights = [1, 1]
+  // const heights = [9, 0]
 
   console.log('[]:', largestRectangleArea(heights))
 }
