@@ -90,7 +90,6 @@ export function arr2tree(arr: (number | null)[]) {
 
     if (isLeft) {
       if (arr[i] != null) {
-        console.log('[]:', peekEl, arr[i])
         peekEl.left = new TreeNode111(arr[i])
         queue.unshift(peekEl.left)
       }
