@@ -1,4 +1,5 @@
-import { MyPromise } from './033_Promise实现'
+// import { MyPromise } from './033_Promise实现'
+import { MyPromise } from './033_Promise实现_2022-03-07'
 
 describe('promise then test', () => {
   it('should can call then method, resolve', async () => {
