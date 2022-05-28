@@ -1,7 +1,7 @@
 function new21Game(n: number, k: number, maxPts: number): number {
   const dp = new Array(k + maxPts).fill(0)
 
-  let minLen = Math.min(n + 1, k + maxPts)
+  const minLen = Math.min(n + 1, k + maxPts)
   for (let i = 0; i < minLen; ++i) {
     dp[i] = 1
   }

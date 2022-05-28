@@ -18,7 +18,7 @@ import { arr2tree, arr2tree2, TreeNode, TreeNode111 } from './common/utils'
  * Encodes a tree to a single string.
  */
 function serialize(root: TreeNode | null): string {
-  let res: string[] = []
+  const res: string[] = []
   rSerialize(root)
 
   return res.join(',')

@@ -32,7 +32,7 @@ function longestCommonPrefix111(strs: string[]): string {
   const len1 = strs[0].length
 
   for (let i = 0; i < len1; ++i) {
-    let mark = strs[0][i]
+    const mark = strs[0][i]
     for (let j = 1; j < len0; ++j) {
       if (mark != strs[j][i]) {
         return strs[j].slice(0, i)

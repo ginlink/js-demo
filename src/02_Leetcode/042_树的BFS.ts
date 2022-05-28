@@ -1,7 +1,7 @@
 import { arr2tree2, TreeNode111 } from './common/utils'
 
 export function treeBFS(root: TreeNode111) {
-  let res: number[][] = []
+  const res: number[][] = []
 
   const queue: TreeNode111[] = []
   if (root != null) {

@@ -99,12 +99,12 @@ function findTheLongestSubstring(s: string): number {
 function findTheLongestSubstring111(s: string): number {
   const len = s.length
 
-  let res = -Infinity
+  const res = -Infinity
   // let pre: {
   //   [key: number]: NumType
   // } = {}
 
-  let pre: { [key: number]: NumType } = new Array(len).fill({
+  const pre: { [key: number]: NumType } = new Array(len).fill({
     a: NumType.EVEN,
     e: NumType.EVEN,
     i: NumType.EVEN,
@@ -113,7 +113,7 @@ function findTheLongestSubstring111(s: string): number {
   })
 
   for (let i = 1; i < len; ++i) {
-    let char = s.charAt(i)
+    const char = s.charAt(i)
 
     if (char == 'a') {
       pre[i]['a'] = pre[i]['a'] == NumType.EVEN ? NumType.ODD : NumType.EVEN

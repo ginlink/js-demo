@@ -7,10 +7,12 @@
 // =>false
 
 function match_brkt(str) {
-  let ans = 0, stack = [], i = 0, len = str.length
+  let ans = 0,
+    stack = [],
+    i = 0,
+    len = str.length
 
   for (; i < len; i++) {
-
     switch (str[i]) {
       case '{':
       case '[':
@@ -30,7 +32,6 @@ function match_brkt(str) {
     }
 
     console.log('[stack]:', stack)
-
   }
   ans = stack.length
   return ans === 0

@@ -1,6 +1,5 @@
-
 function ajax() {
-  let httpRequest;
+  let httpRequest
   if (window.XMLHttpRequest) {
     httpRequest = new XMLHttpRequest()
   } else {
@@ -18,11 +17,11 @@ function ajax() {
 
   function resHandler() {
     console.log('[readyState]:', httpRequest.readyState)
-    if (httpRequest.readyState === XMLHttpRequest.DONE) { // 或者===4
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      // 或者===4
       if (httpRequest.status === 200) {
         console.log('收到服务器响应数据')
         console.log('[返回为字符串]:', httpRequest.responseText)
-
       } else {
         console.log('出错！', httpRequest.status)
       }
@@ -36,12 +35,12 @@ function ajax() {
 // 复习
 // 2021-6-27 20:13:21
 function ajaxR() {
-  (function () {
-    let xhr;
+  ;(function () {
+    let xhr
 
     if (window.XMLHttpRequest) {
       xhr = new XMLHttpRequest()
-      let url = 'http://localhost:3000'
+      const url = 'http://localhost:3000'
       // let url = 'http://192.168.77.1:3000'
 
       xhr.onreadystatechange = handler
@@ -62,8 +61,8 @@ function ajaxR() {
 // ajaxR()
 
 // 用promise封装一下
-let url = 'http://localhost:3000'
-asyncAjax('GET', url).then(res => {
+const url = 'http://localhost:3000'
+asyncAjax('GET', url).then((res) => {
   console.log('[res]:', res)
   console.log('[res]:', res)
 
@@ -86,5 +85,4 @@ function asyncAjax(method, url, data = null) {
       data ? xhr.send(data) : xhr.send()
     }
   })
-
 }

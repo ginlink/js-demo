@@ -56,7 +56,7 @@ fn = debunceR(
   }
 )
 
-let btn = document.getElementById('btn')
+const btn = document.getElementById('btn')
 if (btn) {
   addEventListener('click', fn, false)
 }

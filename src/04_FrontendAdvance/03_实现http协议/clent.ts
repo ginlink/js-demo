@@ -120,8 +120,8 @@ class TrunkedParser {
 }
 
 class Response {
-  statusCode: number = 0
-  statusMsg: string = ''
+  statusCode = 0
+  statusMsg = ''
   headers: Record<any, any> = {}
   body?: any
 

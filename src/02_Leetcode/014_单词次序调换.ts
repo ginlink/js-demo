@@ -12,6 +12,6 @@ function translateRegEx(str) {
   return str.match(/(\w)+/g).reverse().join(' ')
 }
 
-let str = 'I am a developer'
+const str = 'I am a developer'
 // console.log('[]:', translate(str))
 console.log('[]:', translateRegEx(str))

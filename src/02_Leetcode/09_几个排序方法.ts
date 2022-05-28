@@ -3,7 +3,7 @@
 // 时间复杂度O(n2)
 // let arr = [1, 3, 57, 3, 2, 9, 4, 2]
 function bubble(arr1) {
-  let arr = deep_clone1(arr1)
+  const arr = deep_clone1(arr1)
 
   // 逆序遍历
   // for (let len = arr.length, i = len - 1; i >= 0; i--) {
@@ -34,15 +34,16 @@ function bubble(arr1) {
 
 // 第二种：选择排序
 function select(arr1) {
-  let arr = deep_clone1(arr1)
+  const arr = deep_clone1(arr1)
 
   for (let i = 0, len = arr.length; i < len; i++) {
     // 思路：选择最大(小)元素，并将其和最前端元素交换
     // 也就是前端的元素已经排好序了，从后面无序的元素中选择
     // 需要的最大(小)元素
 
-    let min = i  // 前面i个都已经有序了
-    for (let j = i + 1; j < len; j++) {  // 无序
+    let min = i // 前面i个都已经有序了
+    for (let j = i + 1; j < len; j++) {
+      // 无序
       // 找寻最小元素
       if (arr[j] < arr[min]) {
         min = j
@@ -61,13 +62,13 @@ function select(arr1) {
 // 第三种：插入法
 // let arr = [1, 3, 57, 3, 2, 9, 4, 2]
 function insert(arr1) {
-  let arr = deep_clone1(arr1)
+  const arr = deep_clone1(arr1)
   for (let len = arr.length, i = 1; i < len; i++) {
     // 思路：与打牌相似，拿到牌之后想办法插入到指定位置，
     // 这里比较特殊，因为在同一个数组之中操作，那么需要
     // 挪动位置，比较巧妙
 
-    let get = arr[i]
+    const get = arr[i]
     let j = i - 1
     while (j >= 0 && get < arr[j]) {
       // 挪动位置，让拿到的新牌有地方可以放
@@ -92,19 +93,22 @@ function merge_sort(arr) {
 
   function rec(arr, left, right) {
     if (left === right) return
-    let mid = Math.floor((left + right) / 2)
+    const mid = Math.floor((left + right) / 2)
     rec(arr, left, mid)
     rec(arr, mid + 1, right)
     merge(arr, left, mid, right)
   }
 
   function merge(arr, left, mid, right) {
-    let i = left, j = mid + 1, len = right - left + 1, tmp = []
+    let i = left,
+      j = mid + 1,
+      len = right - left + 1,
+      tmp = []
     // i,j为两个数组的边界
 
     while (i <= mid && j <= right) {
-      let item;
-      item = (arr[i] <= arr[j]) ? arr[i++] : arr[j++]
+      let item
+      item = arr[i] <= arr[j] ? arr[i++] : arr[j++]
       tmp.push(item)
     }
     while (i <= mid) tmp.push(arr[i++])
@@ -118,7 +122,7 @@ function merge_sort(arr) {
   return arr
 }
 
-let arr = [1, 3, 57, 3, 2, 9, 4, 2]
+const arr = [1, 3, 57, 3, 2, 9, 4, 2]
 console.log('[bubble]:', bubble(arr))
 console.log('[select]:', select(arr))
 console.log('[insert]:', insert(arr))
@@ -126,7 +130,7 @@ console.log('[merge_sort]:', merge_sort(arr))
 
 // 交换算法
 function swap(arr, a, b) {
-  let tmp = arr[b]
+  const tmp = arr[b]
   arr[b] = arr[a]
   arr[a] = tmp
 }
@@ -134,11 +138,11 @@ function swap(arr, a, b) {
 function deep_clone1(o) {
   return rec(o)
   function rec(o) {
-    if (typeof (o) !== 'object' || o === null || o === undefined || typeof (o) === 'function') return o
+    if (typeof o !== 'object' || o === null || o === undefined || typeof o === 'function') return o
 
     if (o instanceof Array) {
-      let tmp = []
-      o.forEach(item => {
+      const tmp = []
+      o.forEach((item) => {
         tmp.push(rec(item))
       })
 
@@ -147,8 +151,8 @@ function deep_clone1(o) {
       // 遍历类，这里要注意reg类型
       if (o instanceof RegExp) return o
       else {
-        let obj = {}
-        let keys = Object.keys(o)
+        const obj = {}
+        const keys = Object.keys(o)
         for (let i = 0; i < keys.length; i++) {
           obj[keys[i]] = rec(o[keys[i]])
         }

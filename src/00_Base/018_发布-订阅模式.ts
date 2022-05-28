@@ -55,10 +55,10 @@ export function publish() {
   function installEvent(target: Record<string, any>): NormalEvent {
     const res = {}
 
-    for (let key in nomalEvent) {
+    for (const key in nomalEvent) {
       res[key] = nomalEvent[key]
     }
-    for (let key in target) {
+    for (const key in target) {
       res[key] = target[key]
     }
 

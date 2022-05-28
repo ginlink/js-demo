@@ -8,7 +8,6 @@ function leftRightBracket(n) {
    */
   _rec(0, 0, n, '')
   function _rec(left, right, n, s) {
-
     // terminator
     if (left == n && right == n) {
       console.log(s)
@@ -18,8 +17,7 @@ function leftRightBracket(n) {
     // process current logic
 
     // drill down
-    if (left <= n)
-      _rec(left + 1, right, n, s + '(')
+    if (left <= n) _rec(left + 1, right, n, s + '(')
 
     if (left > right && right <= n)
       // right一定小于n，因为left的来源只可能小于n

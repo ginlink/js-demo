@@ -7,12 +7,15 @@
 // 尝试c开始c-b 长度3
 // 尝试a开始a-c 长度3
 
-// 
+//
 // 方法二：滑动窗口
 // 'abcabcbb'
 // 关键点：1集合 2滑动
-var lengthOfLongestSubstring2 = function (s) {
-  let len = s.length, occ = new Set(), rk = 0, ans = 0
+const lengthOfLongestSubstring2 = function (s) {
+  let len = s.length,
+    occ = new Set(),
+    rk = 0,
+    ans = 0
   // 关键点1：occ为一个集合，主要作用是一个储存器(不重复)，
   //    验证是否存在该元素。
 
@@ -36,14 +39,18 @@ var lengthOfLongestSubstring2 = function (s) {
 // 上次复习时间：2021-5-9 20:28:34
 // 上次复习时间：2021-5-16 13:39:34
 function lengthOfLongestSubstring22(str) {
-  let i=0,j=0,occ=new Set(),len=str.length,ans=0
-  
-  for(; i<len; i++){
-    if(i!==0) occ.delete(str[i-1]);
-    // 删除前一个元素，滑动起来
-    while(j<len && !occ.has(str[j])) occ.add(str[j++])
+  let i = 0,
+    j = 0,
+    occ = new Set(),
+    len = str.length,
+    ans = 0
 
-    ans=Math.max(ans,occ.size)
+  for (; i < len; i++) {
+    if (i !== 0) occ.delete(str[i - 1])
+    // 删除前一个元素，滑动起来
+    while (j < len && !occ.has(str[j])) occ.add(str[j++])
+
+    ans = Math.max(ans, occ.size)
   }
   return ans
 }
@@ -51,8 +58,11 @@ function lengthOfLongestSubstring22(str) {
 // 滑动窗口升级版，直接让左直接放到右指针的未知，
 // 目前发现并不能实现，该方法有问题
 // 'abcabcbb'
-var lengthOfLongestSubstring3 = function (s) {
-  let len = s.length, occ = new Set(), rk = 0, ans = 0
+const lengthOfLongestSubstring3 = function (s) {
+  let len = s.length,
+    occ = new Set(),
+    rk = 0,
+    ans = 0
 
   for (let i = 0; i < len; i++) {
     if (i != 0) {
@@ -71,7 +81,7 @@ var lengthOfLongestSubstring3 = function (s) {
 
   return ans
 }
-let s = 'abcabcbb'
+const s = 'abcabcbb'
 // s = 'bbbbb'
 // s = "pwwkew"
 // s = ""

@@ -7,7 +7,7 @@ export function runFsmWithAb(str?: string) {
   if (!str) return false
 
   let i = 0,
-    res: string = ''
+    res = ''
   const len = str.length
   while (true) {
     if (i >= len) break

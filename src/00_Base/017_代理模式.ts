@@ -3,28 +3,26 @@
  */
 
 function main17() {
-  interface Animal{
+  interface Animal {
     name: string
   }
-  interface Dog extends Animal {
-  }
-  interface Cat extends Animal {
+  type Dog = Animal
+  type Cat = Animal
+
+  interface SpeakProxy {
+    speak: () => void
   }
 
-  interface SpeakProxy{
-    speak: ()=>void
-  }
-
-  const dog: Dog = {name: '小花'}
-  const cat: Cat = {name: '小花花时间东风科技'}
+  const dog: Dog = { name: '小花' }
+  const cat: Cat = { name: '小花花时间东风科技' }
 
   const speakProxy = <T>(target: T): T & SpeakProxy => {
     return {
-      ...target, 
-      speak(){
+      ...target,
+      speak() {
         const that = this as Animal
         console.log('[我会说话了！]:', that.name)
-      }
+      },
     }
   }
 

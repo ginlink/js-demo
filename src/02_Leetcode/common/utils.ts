@@ -31,7 +31,7 @@ export class TreeNode111 {
 
 // Exchange algorithm
 export function swap(arr, a, b) {
-  let tmp = arr[b]
+  const tmp = arr[b]
   arr[b] = arr[a]
   arr[a] = tmp
 }
@@ -43,7 +43,7 @@ export function deep_clone(o) {
     if (typeof o !== 'object' || o === null || o === undefined || typeof o === 'function') return o
 
     if (o instanceof Array) {
-      let tmp = []
+      const tmp = []
       o.forEach((item) => {
         tmp.push(rec(item))
       })
@@ -53,8 +53,8 @@ export function deep_clone(o) {
       // 遍历类，这里要注意reg类型
       if (o instanceof RegExp) return o
       else {
-        let obj = {}
-        let keys = Object.keys(o)
+        const obj = {}
+        const keys = Object.keys(o)
         for (let i = 0; i < keys.length; i++) {
           obj[keys[i]] = rec(o[keys[i]])
         }
@@ -66,9 +66,9 @@ export function deep_clone(o) {
 
 // Create an array
 export function createArr(num = 100) {
-  let tmp = []
+  const tmp = []
   for (let i = 0; i < num; i++) {
-    let item = Math.floor(Math.random() * 100)
+    const item = Math.floor(Math.random() * 100)
     tmp.push(item)
   }
 

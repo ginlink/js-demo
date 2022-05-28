@@ -5,8 +5,6 @@
   前提是两个数组本身是有序的
  */
 
-
-
 // 难度：*
 // 方法一：直接合并后排序
 function merge1(nums1, m, nums2, n) {
@@ -15,18 +13,17 @@ function merge1(nums1, m, nums2, n) {
   return nums1
 }
 
-
 // 方法二：双指针法
-var merge2 = function (nums1, m, nums2, n) {
-  let tmp = []
-  let p1 = 0, p2 = 0;
+const merge2 = function (nums1, m, nums2, n) {
+  const tmp = []
+  let p1 = 0,
+    p2 = 0
 
   while (p1 < m && p2 < n) {
     if (nums1[p1] < nums2[p2]) {
       tmp.push(nums1[p1])
       p1++
-    }
-    else {
+    } else {
       tmp.push(nums2[p2])
       p2++
     }
@@ -36,17 +33,16 @@ var merge2 = function (nums1, m, nums2, n) {
   if (p1 < m) tmp.push(...nums1.slice(p1, m))
   if (p2 < n) tmp.push(...nums2.slice(p2, n))
 
-
   nums1 = tmp
 
   return nums1
-};
+}
 
 // 方法二的双指针法省空间的写法：
 function merge22(nums1, m, nums2, n) {
-  let tmp = []
-  for (let i = 0, j = 0; i < m || j < n;) {
-    let item;
+  const tmp = []
+  for (let i = 0, j = 0; i < m || j < n; ) {
+    let item
 
     if (i === m) {
       item = nums2[j++]
@@ -69,9 +65,11 @@ function merge22(nums1, m, nums2, n) {
 // let nums1 = [1, 2, 3, 98, 0, 0, 0], m = 3,
 //  nums2 = [2, 5, 6, 7, 9, 10], n = 6
 function merge22(nums1, m, nums2, n) {
-  let tmp = [], i = 0, j = 0
+  let tmp = [],
+    i = 0,
+    j = 0
   while (i < m || j < n) {
-    let item;
+    let item
     if (i === m) item = nums2[j++]
     else if (j === n) item = nums1[i++]
     else if (nums1[i] < nums2[j]) item = nums1[i++]
@@ -85,7 +83,6 @@ function merge22(nums1, m, nums2, n) {
 
   return nums1
 }
-
 
 // 方法三：逆向双指针法(特殊情况，未看懂解法，暂时放弃)
 // function merge2(nums1, m, nums2, n) {
@@ -104,27 +101,31 @@ function merge22(nums1, m, nums2, n) {
 //   // if (p1 >0) nums1.push(...nums1.slice(p1, m))
 //   if (p2 >0) nums1.push(...nums2.slice(p2, n))
 // }
-var merge4 = function (nums1, m, nums2, n) {
-  let p1 = m - 1, p2 = n - 1;
-  let tail = m + n - 1;
-  var cur;
+const merge4 = function (nums1, m, nums2, n) {
+  let p1 = m - 1,
+    p2 = n - 1
+  let tail = m + n - 1
+  let cur
   while (p1 >= 0 || p2 >= 0) {
     if (p1 === -1) {
-      cur = nums2[p2--];
+      cur = nums2[p2--]
     } else if (p2 === -1) {
-      cur = nums1[p1--];
+      cur = nums1[p1--]
     } else if (nums1[p1] > nums2[p2]) {
-      cur = nums1[p1--];
+      cur = nums1[p1--]
     } else {
-      cur = nums2[p2--];
+      cur = nums2[p2--]
     }
-    nums1[tail--] = cur;
+    nums1[tail--] = cur
   }
 
   return nums1
-};
+}
 
-let nums1 = [1, 2, 3, 98, 0, 0, 0], m = 4, nums2 = [2, 5, 6, 7, 9, 10], n = 6
+const nums1 = [1, 2, 3, 98, 0, 0, 0],
+  m = 4,
+  nums2 = [2, 5, 6, 7, 9, 10],
+  n = 6
 // m = 101, nums1 = createArr(m),
 // n = 10, nums2 = createArr(n)
 
@@ -148,25 +149,28 @@ console.log('[res22]:', merge22(nums1, m, nums2, n))
 // console.timeEnd('res4')
 
 function createArr(num = 100) {
-  let tmp = []
+  const tmp = []
   for (let i = 0; i < num; i++) {
-
-    let item = Math.floor(Math.random() * 100)
+    const item = Math.floor(Math.random() * 100)
     tmp.push(item)
   }
 
   return tmp
 }
 
-let arr1 = [1, 2, 3, 4, 5], arr2 = [2, 3, 4, 5, 6]
+const arr1 = [1, 2, 3, 4, 5],
+  arr2 = [2, 3, 4, 5, 6]
 console.log('[mergeArrayR]:', mergeArrayR(arr1, arr2))
 console.log('[mergeArrayR2]:', mergeArrayR2(arr1, arr2))
 
 function mergeArrayR(arr1, arr2) {
   // 更加清晰，比方法二
-  let i = 0, j = 0, lenI = arr1.length, lenJ = arr2.length
+  let i = 0,
+    j = 0,
+    lenI = arr1.length,
+    lenJ = arr2.length
   // let res = Array(lenI+lenJ)
-  let res = []
+  const res = []
 
   while (i < lenI && j < lenJ) arr1[i] < arr2[j] ? res.push(arr1[i++]) : res.push(arr2[j++])
   while (i < lenI) res.push(arr1[i++])
@@ -176,12 +180,15 @@ function mergeArrayR(arr1, arr2) {
 }
 function mergeArrayR2(arr1, arr2) {
   // 方法二：一遍循环法
-  let i = 0, j = 0, lenI = arr1.length, lenJ = arr2.length
+  let i = 0,
+    j = 0,
+    lenI = arr1.length,
+    lenJ = arr2.length
   // let res = Array(lenI+lenJ)
-  let res = []
+  const res = []
 
   while (i < lenI || j < lenJ) {
-    let item;
+    let item
     if (i == lenI) item = arr2[j++]
     else if (j == lenJ) item = arr1[i++]
     else if (arr1[i] < arr2[j]) item = arr1[i++]

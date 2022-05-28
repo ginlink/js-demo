@@ -9,7 +9,7 @@ function Node(value) {
 function reverse(head) {
   if (head === null || head.next === null) return head
   else {
-    let newHead = reverse(head.next)
+    const newHead = reverse(head.next)
 
     head.next.next = head
     head.next = null
@@ -19,19 +19,17 @@ function reverse(head) {
 }
 
 function createLink(head, num) {
-
   rec(head, num)
   return reverse(head)
 
   function rec(head, num) {
     if (num === 0) return
     else {
-      let node = new Node(num)
+      const node = new Node(num)
       head.next = node
       createLink(node, --num)
     }
   }
-
 }
 
 let head = new Node(0)

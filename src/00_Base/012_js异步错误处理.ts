@@ -1,4 +1,3 @@
-
 class MyError extends Error {
   constructor(msg) {
     super()
@@ -7,7 +6,6 @@ class MyError extends Error {
 }
 
 async function main() {
-
   /**
    * 注意：
    *  1.抓到一个错误就会触发catch
@@ -31,7 +29,7 @@ function asyncFunc() {
     setTimeout(() => {
       resolve('没问题')
       // reject(new MyError('MyError'))
-    }, 1000);
+    }, 1000)
   })
 }
 
@@ -39,7 +37,7 @@ function otherAsyncFunc() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       reject(new Error('其他错误'))
-    }, 1000);
+    }, 1000)
   })
 }
 

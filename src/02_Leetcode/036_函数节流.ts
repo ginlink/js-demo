@@ -4,7 +4,7 @@ const obj = {
 
 function throttle(fn: () => void, wait = 50) {
   // let lastTime: number = -Infinity
-  let lastTime: number = 0
+  let lastTime = 0
 
   return function (...args) {
     const curr = new Date().getTime()

@@ -4,12 +4,12 @@
 
 // 原型继承
 function protoExtends() {
-  function Super() { }
+  function Super() {}
   Super.prototype.print = function (val) {
     console.log('[]:', val)
   }
 
-  function Sub() { }
+  function Sub() {}
   Sub.prototype = Object.create(Super.prototype, {
     constructor: {
       value: Sub,
@@ -18,12 +18,12 @@ function protoExtends() {
 
       writeable: true,
       enumerable: true,
-      configurable: true
-    }
+      configurable: true,
+    },
   })
   // Sub.constructor = Sub
 
-  let sub = new Sub()
+  const sub = new Sub()
 
   sub.print(11111)
   console.log('[]:', sub)
@@ -37,11 +37,9 @@ function classExtends() {
     }
   }
 
-  class Sub extends Super { }
+  class Sub extends Super {}
 
-
-
-  let sub = new Sub()
+  const sub = new Sub()
   sub.print(123)
   console.log('[]:', sub)
 }

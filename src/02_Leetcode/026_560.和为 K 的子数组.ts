@@ -51,7 +51,7 @@ function subarraySum2(nums: number[], k: number): number {
 
     // map's elment is [j...i-1]
     // so it must be ahead of map.set
-    let exist0 = map.get(pre - k)
+    const exist0 = map.get(pre - k)
     if (exist0) {
       count += exist0
     }

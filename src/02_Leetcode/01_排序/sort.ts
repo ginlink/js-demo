@@ -24,7 +24,7 @@ export function bubble(arr: number[]) {
 }
 
 function swap(arr: number[], i: number, j: number) {
-  let tmp = arr[i]
+  const tmp = arr[i]
   arr[i] = arr[j]
   arr[j] = tmp
 }

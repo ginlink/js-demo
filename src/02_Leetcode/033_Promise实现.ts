@@ -19,7 +19,7 @@ export enum PromiseState {
 
 export class MyPromise {
   private state = PromiseState.PENDING
-  private reason: string = ''
+  private reason = ''
   private value: any
 
   // why it is an array?

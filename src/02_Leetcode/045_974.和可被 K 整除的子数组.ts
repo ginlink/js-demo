@@ -9,7 +9,7 @@ function subarrayDivByK(nums: number[], k: number): number {
   for (let i = 0; i < len; ++i) {
     sum += nums[i]
 
-    let mod = ((sum % k) + k) % k
+    const mod = ((sum % k) + k) % k
     // mod = mod < 0 ? -mod : mod
 
     const same = map.get(mod) ?? 0

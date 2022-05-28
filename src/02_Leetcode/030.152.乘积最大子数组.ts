@@ -30,8 +30,8 @@ function maxProduct(nums: number[]): number {
 
 function maxProduct111(nums: number[]): number {
   const len = nums.length
-  let maxF = new Array(len).fill(0)
-  let minF = new Array(len).fill(0)
+  const maxF = new Array(len).fill(0)
+  const minF = new Array(len).fill(0)
 
   maxF[0] = nums[0]
   minF[0] = nums[0]

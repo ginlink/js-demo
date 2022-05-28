@@ -39,7 +39,7 @@ function threeSum111(nums: number[]): number[][] {
       continue
     }
 
-    let left = i + 1,
+    const left = i + 1,
       right = len - 1,
       target = -nums[i]
 

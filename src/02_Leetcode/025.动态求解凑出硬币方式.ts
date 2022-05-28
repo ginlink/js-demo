@@ -27,7 +27,7 @@ function coinWaysNum(coinFace: number[], w: number): number {
 function coinWaysNum111(coinFace: number[], w: number): number {
   if (w < 1) return undefined
 
-  let minF = new Array(w).fill(0)
+  const minF = new Array(w).fill(0)
 
   for (let i = 1; i <= w; ++i) {
     let cost = Infinity
